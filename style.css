@@ -1,0 +1,221 @@
+/* Animation */
+@keyframes rolling {
+  /*
+    0% {
+        margin-top: 0;
+    }
+    25% {
+        margin-top: -1.5em;
+    }
+    50% {
+        margin-top: -3em;
+    }
+    75% {
+        margin-top: -4.5em;
+    }
+    100% {
+        margin-top: -6em;
+    }
+  */
+    0% {
+        transform: translateY(0); /* 자기 자신의 너비, 높이 기준에서의 %를 가져온다 */
+    }
+    25% {
+        transform: translateY(-20%);
+    }
+    50% {
+        transform: translateY(-40%);
+    }
+    75% {
+        transform: translateY(-60%);
+    }
+    100% {
+        transform: translateY(-80%);
+    }
+}
+
+/* CSS Reset */
+body, h1, h2, h3, p, ul, dl, dd {
+    margin: 0; /* 브라우저가 기본으로 제공하는 스타일부터 제거! */
+    padding: 0;  /* 이러한 초기화작업을 하지않으면 나중에 뒷통수맞는다 */
+}
+
+li {
+    list-style-type: none;
+}
+
+h1, h2, h3{
+    font-size: 100%;
+    font-weight: normal;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+body {
+    background-color: #111;
+    color: #999;
+}
+
+.portrait {
+    background-image: url(images/profile4.jpg);
+    background-size: cover;
+    background-position: center;
+    padding-top: 56.25%; /* 16:9 */
+}
+
+.profile {
+    padding: 5%; /* %로 주게되면 너비기준(스마트폰 종류와 상관없이 기기의 비율에 맞게) */
+    min-height: 2300px;
+}
+
+.profile-header,
+.profile-section {
+    padding-bottom: 14% ;
+}
+
+.profile-section h2 {
+    border-top: 3px solid;
+    color: orangered;
+    font-size: 30px;
+    margin-bottom: 20px;
+    padding: 0.5em 0;
+    position: sticky;
+    top: 0;
+    background-color: #111;
+    box-shadow: 0 0 50px 10px #111;
+}
+
+.name {
+    font-size: 40px;
+    line-height: 2; /* 한줄의 높이, 폰트 크기를 30으로 정했으니 줄높이1의 수치는 30이다 */
+    font-style: italic;
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+    font-family: 'Pacifico', cursive;
+    position: sticky;
+    top: -1.9em;
+    background-color: #111;
+    box-shadow: 0 0 50px 10px #111;
+}
+
+.name-job {
+    display: inline-block;
+    color: white;
+    /* background-color: darkred; */
+    vertical-align: top; /* I'm a 정렬 */
+    margin-top: 0px;
+    height: 2em;
+    overflow: hidden;
+    padding-right: 0.5em;
+    position: relative;
+}
+.name-job::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: -1em;
+    box-shadow: inset 0 0 10px 10px #111;
+}
+
+.name-job-list {
+    animation-name: rolling;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    /* animation-direction: reverse; */
+}
+
+.name-title {
+    font-size:  1.8em; /* 부모 폰트의 1.3배를 준다는 뜻 */
+    line-height: 0.7;
+    color: deeppink;
+    margin-left: -0.3em;
+    position: relative;
+    top: 10px;
+
+}
+
+.icons {
+    margin: 20px 0;
+}
+
+.icons a {
+    background-image: url(images/icons.png);
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-indent: -9999px;
+}
+
+.icons a.twitter { background-position: left top; }
+.icons a.facebook { background-position: center top; }
+.icons a.pinterest { background-position: right top; }
+
+.icons a:hover { background-position-y: bottom }
+
+.introduce {
+      font-size: 1rem; /* HTML 설정폰트사이즈와 비례 */
+}
+
+.introduce li {
+    padding-bottom: 30px;
+}
+
+.introduce li h3 {
+    color: orange;
+    font-size: 24px;
+    margin-right: 0.5em;
+}
+
+.introduce li:last-child {
+   padding-bottom: 0px;
+}
+
+.graph li {
+    background-color: dodgerblue;
+    color: white;
+    padding: 0.5em 1em;
+    margin: 0.4em 0;
+    border-radius: 50px;
+    box-sizing: border-box;
+    background: rgb(7,0,125);
+    background: rgb(0,109,227);
+    background: linear-gradient(90deg, rgba(0,109,227,1) 0%, rgba(169,0,255,1) 100%);
+}
+
+.graph li::before {
+    content: attr(data-score);
+    float: right;
+}
+
+.graph li[data-score="20%"] { width: 20%; }
+.graph li[data-score="15%"] { width: 15%; }
+
+.list dt {
+    color: orange;
+    float: left;
+    width: 4em;
+}
+
+.list dd {
+    overflow: hidden;
+}
+
+@media ( min-width: 768px ) {
+    .portrait {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 60vw;
+        height: 100vh;
+        padding: 0;
+    }
+    .profile {
+      margin-left: 60vw;
+    }
+}
